@@ -14,8 +14,8 @@ class SearchBloodPg extends HTMLElement
         document.body.appendChild(link);
 
         this.innerHTML = `
-            <div id="main-content">
-                <h1>Search for Blood</h1>
+        <div id="query-container">
+            <h1>Search for Blood</h1>
 
             <div class="search-container">
                 <div class="form-group">
@@ -38,11 +38,10 @@ class SearchBloodPg extends HTMLElement
                     </select>
                 </div>
         
-                <!-- <button onclick="searchBlood()">Search</button> -->
                 <button onclick="alert('Functionality under development...!');">Search</button>
             </div>
         
-           <div id="results">
+           <div id="results-container">
                 <h2>Search Results</h2>
                 <table id="resultsTable">
                     <thead>
