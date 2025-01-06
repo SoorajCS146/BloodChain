@@ -13,27 +13,26 @@ class DonationLogsPg extends HTMLElement
         document.body.appendChild(link);
 
         this.innerHTML = `
-            <div id=main-contnet>
+            <div id=main-content>
                 <h1>Donation Logs</h1>
                 
                 <div id="results">
-                <h2>Current Logs</h2>
-                <table id="resultsTable">
-                    <thead>
-                        <tr>
-                            <th>Timestamp</th>
-                            <th>Donor</th>
-                            <th>BloodType</th>
-                            <th>OtherField1</th>
-                            <th>OtherField2</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Results will be dynamically inserted here -->
-                    </tbody>
-                </table>
-            </div>
-
+                    <h2>Current Logs</h2>
+                    <table id="resultsTable">
+                        <thead>
+                            <tr>
+                                <th>Timestamp</th>
+                                <th>Donor</th>
+                                <th>BloodType</th>
+                                <th>OtherField1</th>
+                                <th>OtherField2</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Results will be dynamically inserted here -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
         `;
     }
