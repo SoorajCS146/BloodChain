@@ -4,28 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Page</title>
-    <link rel="stylesheet" href="../Styles/Main.css">
+    <!-- <link rel="stylesheet" href="../Styles/Main.css"> -->
 </head>
+
+<script type="module" src="../Navigation/Navigator.js"></script>
+<script type="module" src="../Components/HeaderComponent.js"></script>
+<script type="module" src="../Pages/HomePage.js"></script>
+
 <body>
-    <header>
+    <!-- <header>
         <h1>Blood Donation Management System</h1>
-    </header>
-    <div class="container">
-        <div class="section" onclick="location.href='search_blood.html';">
+    </header> -->
+    <header-component></header-component>
+    <div id="page-content" style="flex:1; height:100%;">
+
+    </div>
+</body>
+
+<script type="module">
+    console.log("Home-Page is opened!");
+    window.openPage("home-page");
+</script>
+</html>
+
+<!-- <div class="container">
+         <div class="section" onclick="location.href='search_blood.html';">
+            <div class="section" onclick="openSearchBloodPg()">
             <span>Search for Blood</span>
         </div>
         <div class="section" onclick="location.href='leader_portal.html';">
             <span>Leader Groups</span>
         </div>
-        <div class="section" onclick="location.href='donation_logs.html';">
+        <div class="section" onclick="location.href='donation_logs.html';"> 
             <span>Donation Logs</span>
         </div>
     </div>
 
     <footer>
         <p>&copy; 2024 Blood Donation Management System</p>
-    </footer>
+    </footer> 
+    <script>
+        function openSearchBloodPg()
+        {
+            window.openPage("search-blood-pg");
+        }
+    </script>
     
-    
-</body>
-</html>
+    -->
