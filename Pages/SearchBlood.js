@@ -1,4 +1,4 @@
-
+import TableComponents from '../Components/TableComponent.js';
 
 class SearchBloodPg extends HTMLElement
 {
@@ -41,24 +41,20 @@ class SearchBloodPg extends HTMLElement
                 <button onclick="alert('Functionality under development...!');">Search</button>
             </div>
         
-           <div id="results-container">
-                <h2>Search Results</h2>
-                <table id="resultsTable">
-                    <thead>
-                        <tr>
-                            <th>Volunteer Name</th>
-                            <th>Contact Number</th>
-                            <th>Team Leader</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Results will be dynamically inserted here -->
-                    </tbody>
-                </table>
+            <div id="result-container">
+
             </div>
+           
         </div>
         `;
 
+        const resultContainer = document.querySelector("#result-container");
+        const resultTable = document.createElement("table-component");
+
+        const headerArray =  ["Volunteer Name","Contact Number","Team Leader"]
+        resultTable.initialize(headerArray);
+        
+        resultContainer.appendChild(resultTable);
         
     }
 }
@@ -66,10 +62,18 @@ class SearchBloodPg extends HTMLElement
 customElements.define("search-blood-pg", SearchBloodPg);
 export default SearchBloodPg;
 
-// let pageContent_constructor = new function()
-// {
-//     this.pageContent = document.getElementById("main-content");
-// }
-
-// customElements.define("search-blood", pageContent_constructor);
-// export default pageContent;
+// <div id="results-container">
+//                 <h2>Search Results</h2>
+//                 <table id="resultsTable">
+//                     <thead>
+//                         <tr>
+//                             <th>Volunteer Name</th>
+//                             <th>Contact Number</th>
+//                             <th>Team Leader</th>
+//                         </tr>
+//                     </thead>
+//                     <tbody>
+//                         <!-- Results will be dynamically inserted here -->
+//                     </tbody>
+//                 </table>
+//             </div>
