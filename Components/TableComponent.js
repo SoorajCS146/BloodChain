@@ -4,9 +4,10 @@ class TableComponent extends HTMLElement
     {
         super();
     }
-    initialize(headerColumns)
+    initialize(headerColumns, resultRecords)
     {   
         this.headerColumns = headerColumns;
+        this.resultRecords = resultRecords;
     }
     connectedCallback()
     {
@@ -15,6 +16,9 @@ class TableComponent extends HTMLElement
                 <thead> 
                     <tr id="header-row"> </tr>
                 </thead>
+                <tbody>
+
+                </tbody>
             </table>
         `;
 
@@ -24,6 +28,20 @@ class TableComponent extends HTMLElement
             const headerField = document.createElement("th");
             headerField.innerText = columnName;
             headerRow.appendChild(headerField);
+        }
+
+        const headerBody = document.querySelector("tbody");
+
+        for( const record of this.resultRecords)
+        {
+            const currentRow = document.createElement("tr");
+            for( const field of record)
+            {
+                const currentField = document.createElement("td");
+                currentField.innerText = field;
+                currentRow.appendChild(currentField);
+            }
+            headerBody.appendChild(currentRow);
         }
     }
 }

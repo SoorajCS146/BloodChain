@@ -38,7 +38,7 @@ class SearchBloodPg extends HTMLElement
                     </select>
                 </div>
         
-                <button onclick="alert('Functionality under development...!');">Search</button>
+                <button id="search-donor-button">Search</button>
             </div>
         
             <div id="result-container">
@@ -47,14 +47,26 @@ class SearchBloodPg extends HTMLElement
            
         </div>
         `;
-
+        const tempArray = [
+            ["Sooraj", "12345", "SS"],
+            ["Suvan", "23456", "SBU"]
+        ];
+        const searchBloodButton = document.querySelector("#search-donor-button");
         const resultContainer = document.querySelector("#result-container");
-        const resultTable = document.createElement("table-component");
+        searchBloodButton.addEventListener("click", () =>
+        {
+            console.log("Button Clikced!")   ;
+            const resultTable = document.createElement("table-component");
+    
+            const headerArray =  ["Volunteer Name","Contact Number","Team Leader"]
+            resultTable.initialize(headerArray, tempArray);
+            
+            resultContainer.appendChild(resultTable);
+        });
 
-        const headerArray =  ["Volunteer Name","Contact Number","Team Leader"]
-        resultTable.initialize(headerArray);
-        
-        resultContainer.appendChild(resultTable);
+
+
+
         
     }
 }
