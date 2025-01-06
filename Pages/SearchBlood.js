@@ -54,15 +54,23 @@ class SearchBloodPg extends HTMLElement
         
         const searchBloodButton = this.querySelector(".search-donor-button");
         const resultContainer = this.querySelector(".result-bloodContainer");
+        console.log("Before SEARCH : " + resultContainer.querySelector("table-component"));
+
         searchBloodButton.addEventListener("click", () =>
         {
-            console.log("Button Clikced!")   ;
-            const resultTable = document.createElement("table-component");
+            console.log("Button Clikced!");
+            if(resultContainer.querySelector("table-component") == null)
+            {
+                const resultTable = document.createElement("table-component");
     
-            const headerArray1 =  ["Volunteer Name","Contact Number","Team Leader"]
-            resultTable.initialize(headerArray1, tempArray1);
-            resultContainer.appendChild(resultTable);
+                const headerArray1 =  ["Volunteer Name","Contact Number","Team Leader"]
+                resultTable.initialize(headerArray1, tempArray1);
+                resultContainer.appendChild(resultTable);
+            }
+            
+            console.log("After SEARCH : " + resultContainer.querySelector("table-component"));
         });        
+        
     }
 }
 
