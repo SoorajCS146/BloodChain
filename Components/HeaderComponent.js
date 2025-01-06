@@ -58,7 +58,7 @@ class HeaderComponent extends HTMLElement
 
             #backButton {
                 border: solid 2px black;
-                text-algo
+                text-align: center;
             }
 
 
