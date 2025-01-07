@@ -30,16 +30,24 @@ input, select {
     width: 200px;
 }
 button {
-    margin-top: 15px;
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #4CAF50;
+    width: 150px;
+    height: 50px;
+    margin: 20px;
+    background-color: #333;
     color: white;
-    border: none;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     cursor: pointer;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
 }
 button:hover {
-    background-color: #45a049;
+    background-color: #A7D477;
+    transform: scale(1.1);
 }
 #results {
     margin-top: 30px;
