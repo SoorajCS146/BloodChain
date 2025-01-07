@@ -21,6 +21,11 @@ class LeaderPortalPg extends HTMLElement
             <p> Leader Name : </p><br>
             <p> Other reltd Info : </p><br>
         </div>
+
+        <div class="popup-prompt">
+
+        </div>
+
         <div class="result-leaderTeamContainer"> 
 
         </div>
@@ -41,6 +46,32 @@ class LeaderPortalPg extends HTMLElement
             const resultLeaderTable = document.createElement("table-component");
             resultLeaderTable.initialize(headerArray2,tempArray2);
             leaderTeamContainer.appendChild(resultLeaderTable);
+        });
+
+
+        // Trial for the popup-prompt
+        const popupPromptDiv = this.querySelector(".popup-prompt");
+
+        const promptButton = document.createElement("button");
+        promptButton.className = "prompt-button";
+        promptButton.innerText = "Add Volunteer";
+        popupPromptDiv.appendChild(promptButton);
+
+        const promptDivContent = document.createElement("div");
+        promptDivContent.className = "popup-prompt-content";
+        promptDivContent.style.backgroundColor = "aqua";
+        promptDivContent.style.width = "auto";
+        promptDivContent.style.height = "auto";
+        promptDivContent.style.display = "block";
+        promptDivContent.innerText = "PROMPTED";
+
+        promptButton.addEventListener("click", () =>
+        {
+            console.log("Prompt Button is clicked!");
+            if(this.querySelector(".popup-prompt-content") == null)
+            {
+                popupPromptDiv.appendChild(promptDivContent);
+            }
         });
     }   
 }
