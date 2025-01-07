@@ -1,4 +1,4 @@
-import TableComponents from '../Components/TableComponent.js';
+import TableComponent from '../Components/TableComponent.js';
 
 class SearchBloodPg extends HTMLElement
 {
@@ -61,6 +61,7 @@ class SearchBloodPg extends HTMLElement
             console.log("Button Clikced!");
             if(resultContainer.querySelector("table-component") == null)
             {
+                console.log("Table component is null!");
                 const resultTable = document.createElement("table-component");
     
                 const headerArray1 =  ["Volunteer Name","Contact Number","Team Leader"]
@@ -70,6 +71,8 @@ class SearchBloodPg extends HTMLElement
             
             console.log("After SEARCH : " + resultContainer.querySelector("table-component"));
         });        
+
+        console.log("Mounted Search Blood page!");
         
     }
 }

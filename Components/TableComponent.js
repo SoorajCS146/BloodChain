@@ -14,15 +14,17 @@ class TableComponent extends HTMLElement
         this.innerHTML=`
             <table>
                 <thead> 
-                    <tr id="header-row"> </tr>
+                    <tr class="header-row"> </tr>
                 </thead>
                 <tbody>
 
                 </tbody>
             </table>
         `;
+        console.log("Created table component");
 
-        const headerRow = document.querySelector("#header-row");
+        const headerRow = this.querySelector(".header-row");
+
         for(const columnName of this.headerColumns)
         {   
             const headerField = document.createElement("th");
@@ -30,7 +32,7 @@ class TableComponent extends HTMLElement
             headerRow.appendChild(headerField);
         }
 
-        const headerBody = document.querySelector("tbody");
+        const headerBody = this.querySelector("tbody");
 
         for( const record of this.resultRecords)
         {
