@@ -30,8 +30,10 @@ class LeaderPortalPg extends HTMLElement
             ["1MS22Cs130","Suvan","A","1456"]
         ];
         console.log(this);
+      
         const searchLeaderTeamButton = this.querySelector(".search-leaderTeam-button");
         const leaderTeamContainer = this.querySelector(".result-leaderTeamContainer");
+        this.appendChild(leaderTeamContainer);
         searchLeaderTeamButton.addEventListener("click",() =>
         {   
             console.log("Button clicked for leader team");

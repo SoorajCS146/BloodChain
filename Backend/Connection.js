@@ -6,9 +6,10 @@ class DatabaseConnector
     static connectionDetails = 
     {
         host: 'localhost',
+        port: 3307,
         user: 'root',
         password: '',
-        database: 'BDMS'
+        database: 'bdms'
     };
 
     static async connect()
