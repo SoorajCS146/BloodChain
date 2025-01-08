@@ -45,9 +45,11 @@ class LeaderPortalPg extends HTMLElement
             </div>
         </div>
         `;
+
         const addVolunteerButton = this.querySelector(".add-volunteer-button");
         const modal = this.querySelector("#addVolunteerModal");
         const closeModal = this.querySelector("#closeModal");
+        
         const form = this.querySelector("#addVolunteerForm");
         addVolunteerButton.addEventListener("click", () => {
             modal.style.display = "block";
@@ -64,6 +66,7 @@ class LeaderPortalPg extends HTMLElement
                 modal.style.display = "none";
             }
         });
+
         // Handle Form Submission
         form.addEventListener("submit", (event) => {
             event.preventDefault();
@@ -81,7 +84,12 @@ class LeaderPortalPg extends HTMLElement
             this.volunteerData.push(formData);
 
             // Log data for debugging
-            console.log("Volunteer Data:", this.volunteerData);
+            // console.log("Volunteer Data:", this.volunteerData);
+            console.log(typeof this.volunteerData);
+            console.log(this.volunteerData);
+            console.log("Seperator");
+            console.log(this.volunteerData[0]);
+            console.log(typeof this.volunteerData[0]);
 
             // Display success message
             alert("Volunteer data stored in array successfully!");
@@ -90,23 +98,34 @@ class LeaderPortalPg extends HTMLElement
             modal.style.display = "none";
             form.reset();
         });
+
         console.log(this.volunteerData);
-        const tempArray2 = [
-            ["1MS22CS146","Sooraj","O","1234"],
-            ["1MS22Cs130","Suvan","A","1456"]
+        // const tempArray2 = [
+        //     ["1MS22CS146","Sooraj","O","1234"],
+        //     ["1MS22Cs130","Suvan","A","1456"]
+        // ];
+        const tempArr = [
+            {
+                USN: 123,
+                TeamLeaderUSN: 456,
+                Sex: "M",
+                BloodGroup: "O+",
+                DOB: "2024-01-08"
+            }
         ];
         console.log(this);
       
         const searchLeaderTeamButton = this.querySelector(".search-leaderTeam-button");
         const leaderTeamContainer = this.querySelector(".result-leaderTeamContainer");
+        this.headerArray = ["USN", "TeamLeaderUSN", "Sex", "BloodType", "DOB"];
         searchLeaderTeamButton.addEventListener("click",() =>
         {   
             console.log("Button clicked for leader team");
             if(leaderTeamContainer.querySelector("table-component")==null)
             {
-                const headerArray2 = ["USN","Name","Blood Group","Contact Phone"];
+                
                 const resultLeaderTable = document.createElement("table-component");
-                resultLeaderTable.initialize(headerArray2,tempArray2);
+                resultLeaderTable.initialize(this.headerArray, tempArr);
                 leaderTeamContainer.appendChild(resultLeaderTable);
             }
         });
