@@ -1,3 +1,4 @@
+import { fetchData } from "../Backend/FetchData.js";
 import { insertIntoTable } from "../Backend/InsertIntoTable.js";
 class LeaderPortalPg extends HTMLElement
 {
@@ -77,10 +78,7 @@ class LeaderPortalPg extends HTMLElement
             };
 
 
-            // Add form data to volunteerData array
-            console.log("Sent data");
             this.volunteerData.push(formData);
-            console.log(this.volunteerData);
             // insertIntoTable("TeamLeader",[{
             //     USN:"LeaderUSN",
             //     Name:"Sooraj",
@@ -102,11 +100,17 @@ class LeaderPortalPg extends HTMLElement
         searchLeaderTeamButton.addEventListener("click",() =>
         {   
             console.log("Button clicked for leader team");
+            const tempArr =  fetchData("Donors","*");
+            console.log("tempArr:"+tempArr);
+            console.log(tempArr);
+            const resultArr=tempArr["rows"];
+            console.log(typeof(resultArr));
+            console.log(resultArr);
             if(leaderTeamContainer.querySelector("table-component")==null)
             {
                 
                 const resultLeaderTable = document.createElement("table-component");
-                resultLeaderTable.initialize(this.headerArray, tempArr);
+                resultLeaderTable.initialize(this.headerArray, resultArr);
                 leaderTeamContainer.appendChild(resultLeaderTable);
             }
         });

@@ -41,7 +41,7 @@ class DatabaseConnector
         const [rows, fields] = await DatabaseConnector.connection.execute(query);
 
         await DatabaseConnector.disconnect();
-
+        
         return { rows: rows, fields: fields };
     }
 }
