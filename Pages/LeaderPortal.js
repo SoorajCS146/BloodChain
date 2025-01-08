@@ -97,13 +97,13 @@ class LeaderPortalPg extends HTMLElement
         const searchLeaderTeamButton = this.querySelector(".search-leaderTeam-button");
         const leaderTeamContainer = this.querySelector(".result-leaderTeamContainer");
         this.headerArray = ["USN", "TeamLeaderUSN", "Sex", "BloodGroup", "DOB"];
-        searchLeaderTeamButton.addEventListener("click",() =>
+        searchLeaderTeamButton.addEventListener("click", async () =>
         {   
             console.log("Button clicked for leader team");
-            const tempArr =  fetchData("Donors","*");
+            const tempArr = await  fetchData("Donors","*");
             console.log("tempArr:"+tempArr);
             console.log(tempArr);
-            const resultArr=tempArr["rows"];
+            const resultArr=tempArr.rows;
             console.log(typeof(resultArr));
             console.log(resultArr);
             if(leaderTeamContainer.querySelector("table-component")==null)
