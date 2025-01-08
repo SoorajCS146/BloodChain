@@ -1,5 +1,4 @@
-
-
+import { insertIntoTable } from "../Backend/InsertIntoTable.js";
 class LeaderPortalPg extends HTMLElement
 {
     constructor()
@@ -31,15 +30,15 @@ class LeaderPortalPg extends HTMLElement
                 <h2>Add Volunteer</h2>
                 <form id="addVolunteerForm">
                     <label for="usn">USN:</label>
-                    <input type="text" id="usn" name="usn" required><br><br>
+                    <input autocomplete="off" type="text" id="usn" name="usn" value="DonorUSN" required><br><br>
                     <label for="teamLeaderUSN">Team Leader USN:</label>
-                    <input type="text" id="teamLeaderUSN" name="teamLeaderUSN" required><br><br>
+                    <input autocomplete="off" type="text" id="teamLeaderUSN" name="teamLeaderUSN" value="LeaderUSN" required><br><br>
                     <label for="sex">Sex:</label>
-                    <input type="text" id="sex" name="sex" required><br><br>
+                    <input autocomplete="off" type="text" id="sex" name="sex" value="M" required><br><br>
                     <label for="bloodType">Blood Type:</label>
-                    <input type="text" id="bloodType" name="bloodType" required><br><br>
+                    <input autocomplete="off" type="text" id="bloodType" name="bloodType" value="O+" required><br><br>
                     <label for="dob">Date of Birth:</label>
-                    <input type="date" id="dob" name="dob" required><br><br>
+                    <input autocomplete="off" type="date" id="dob" name="dob" value="2025-01-08" required><br><br>
                     <button type="submit">Submit</button>
                 </form>
             </div>
@@ -48,18 +47,15 @@ class LeaderPortalPg extends HTMLElement
 
         const addVolunteerButton = this.querySelector(".add-volunteer-button");
         const modal = this.querySelector("#addVolunteerModal");
-        const closeModal = this.querySelector("#closeModal");
-        
+        const closeModal = this.querySelector("#closeModal");        
         const form = this.querySelector("#addVolunteerForm");
         addVolunteerButton.addEventListener("click", () => {
             modal.style.display = "block";
         });
-
         // Close Modal
         closeModal.addEventListener("click", () => {
             modal.style.display = "none";
         });
-
         // Close Modal When Clicking Outside
         window.addEventListener("click", (event) => {
             if (event.target === modal) {
@@ -73,24 +69,25 @@ class LeaderPortalPg extends HTMLElement
 
             // Get form values
             const formData = {
-                usn: form.usn.value,
-                teamLeaderUSN: form.teamLeaderUSN.value,
-                sex: form.sex.value,
-                bloodType: form.bloodType.value,
-                dob: form.dob.value,
+                USN: form.usn.value,
+                TeamLeaderUSN: form.teamLeaderUSN.value,
+                Sex: form.sex.value,
+                BloodGroup: form.bloodType.value,
+                DOB: form.dob.value,
             };
 
+
             // Add form data to volunteerData array
+            console.log("Sent data");
             this.volunteerData.push(formData);
-
-            // Log data for debugging
-            // console.log("Volunteer Data:", this.volunteerData);
-            console.log(typeof this.volunteerData);
             console.log(this.volunteerData);
-            console.log("Seperator");
-            console.log(this.volunteerData[0]);
-            console.log(typeof this.volunteerData[0]);
-
+            // insertIntoTable("TeamLeader",[{
+            //     USN:"LeaderUSN",
+            //     Name:"Sooraj",
+            //     Department:"CSE"
+            // }],["USN","Name","Department"]);
+            insertIntoTable("Donors",this.volunteerData, this.headerArray);
+            this.volunteerData = [];
             // Display success message
             alert("Volunteer data stored in array successfully!");
 
@@ -99,25 +96,9 @@ class LeaderPortalPg extends HTMLElement
             form.reset();
         });
 
-        console.log(this.volunteerData);
-        // const tempArray2 = [
-        //     ["1MS22CS146","Sooraj","O","1234"],
-        //     ["1MS22Cs130","Suvan","A","1456"]
-        // ];
-        const tempArr = [
-            {
-                USN: 123,
-                TeamLeaderUSN: 456,
-                Sex: "M",
-                BloodGroup: "O+",
-                DOB: "2024-01-08"
-            }
-        ];
-        console.log(this);
-      
         const searchLeaderTeamButton = this.querySelector(".search-leaderTeam-button");
         const leaderTeamContainer = this.querySelector(".result-leaderTeamContainer");
-        this.headerArray = ["USN", "TeamLeaderUSN", "Sex", "BloodType", "DOB"];
+        this.headerArray = ["USN", "TeamLeaderUSN", "Sex", "BloodGroup", "DOB"];
         searchLeaderTeamButton.addEventListener("click",() =>
         {   
             console.log("Button clicked for leader team");
@@ -134,22 +115,3 @@ class LeaderPortalPg extends HTMLElement
 
 customElements.define("leader-portal-pg", LeaderPortalPg);
 export default LeaderPortalPg;
-
-{/* <div class="content-container" id="results">
-
-
-<table id="resultsTable">
-    <thead>
-        <tr>
-            <th>USN</th>
-            <th>Name</th>
-            <th>Semester</th>
-            <th>Branch</th>
-            <th>OtherField1/th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- Results will be dynamically inserted here -->
-    </tbody>
-</table>
-</div> */}
