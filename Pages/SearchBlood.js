@@ -1,3 +1,4 @@
+import { fetchData } from '../Backend/FetchData.js';
 import TableComponent from '../Components/TableComponent.js';
 
 class SearchBloodPg extends HTMLElement
@@ -47,25 +48,41 @@ class SearchBloodPg extends HTMLElement
            
         </div>
         `;
-        const tempArray1 = [
-            ["Sooraj", "12345", "SS"],
-            ["Suvan", "23456", "SBU"]
-        ];
+        // const tempArray1 = [
+        //     ["Sooraj", "12345", "SS"],
+        //     ["Suvan", "23456", "SBU"]
+        // ];
         
         const searchBloodButton = this.querySelector(".search-donor-button");
         const resultContainer = this.querySelector(".result-bloodContainer");
-        console.log("Before SEARCH : " + resultContainer.querySelector("table-component"));
+    
 
-        searchBloodButton.addEventListener("click", () =>
+        //SearchBlood text of both blood and type is needed, this is for that 
+        const searchBlood = document.querySelector("#bloodType");
+        const searchRh = document.querySelector("#rhType");
+
+
+        searchBloodButton.addEventListener("click", async() =>
         {
-            console.log("Button Clikced!");
+            let condition= searchBlood.value;
+            console.log(searchRh.value);
+            if(searchRh.value=="Positive")
+            {
+                condition+="+";
+            }
+            else
+            {
+                condition+="-";
+            }
+            const tempArr = await fetchData("Donors","*",`where BloodType='${condition}'`);
+            const resultArr = tempArr.rows;
+            console.log(tempArr);
             if(resultContainer.querySelector("table-component") == null)
             {
-                console.log("Table component is null!");
+
                 const resultTable = document.createElement("table-component");
-    
-                const headerArray1 =  ["Volunteer Name","Contact Number","Team Leader"]
-                resultTable.initialize(headerArray1, tempArray1);
+                const headerArray = ["USN", "TeamLeaderUSN", "Sex", "BloodGroup", "DOB"];
+                resultTable.initialize(headerArray, resultArr);
                 resultContainer.appendChild(resultTable);
             }
             

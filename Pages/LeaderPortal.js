@@ -45,7 +45,6 @@ class LeaderPortalPg extends HTMLElement
             </div>
         </div>
         `;
-
         const addVolunteerButton = this.querySelector(".add-volunteer-button");
         const modal = this.querySelector("#addVolunteerModal");
         const closeModal = this.querySelector("#closeModal");        
@@ -76,14 +75,7 @@ class LeaderPortalPg extends HTMLElement
                 BloodGroup: form.bloodType.value,
                 DOB: form.dob.value,
             };
-
-
             this.volunteerData.push(formData);
-            // insertIntoTable("TeamLeader",[{
-            //     USN:"LeaderUSN",
-            //     Name:"Sooraj",
-            //     Department:"CSE"
-            // }],["USN","Name","Department"]);
             insertIntoTable("Donors",this.volunteerData, this.headerArray);
             this.volunteerData = [];
             // Display success message
@@ -99,8 +91,12 @@ class LeaderPortalPg extends HTMLElement
         this.headerArray = ["USN", "TeamLeaderUSN", "Sex", "BloodGroup", "DOB"];
         searchLeaderTeamButton.addEventListener("click", async () =>
         {   
-            console.log("Button clicked for leader team");
-            const tempArr = await  fetchData("Donors","*");
+            
+            const searchLeader= document.querySelector(".form-group");
+        
+            const tempArr = await  fetchData("Donors","*",`where USN = '${searchLeader.value}'`);
+
+            
             console.log("tempArr:"+tempArr);
             console.log(tempArr);
             const resultArr=tempArr.rows;
