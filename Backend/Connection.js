@@ -1,10 +1,22 @@
 const mysql = require("mysql2/promise");
 
+connection.connect((err) => {
+  if (err) throw err;
+  console.log('Connected to the MySQL database!');
+});
+
+
 class DatabaseConnector 
 {
     static connection = null;
     static connectionDetails = 
     {
+        // Optional .. probably not requried.
+        // host: process.env.DB_HOST || 'db',
+        // user: process.env.DB_USER || 'root',
+        // password: process.env.DB_PASSWORD || '',
+        // database: process.env.DB_NAME || 'bdms',
+
         host: 'localhost',
         port: 3307,
         user: 'root',
