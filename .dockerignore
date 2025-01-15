@@ -1,0 +1,7 @@
+
+# To ignore node_modules folder .. or it as a sub-folder of any inner directory.
+**/node_modules
+
+push.bat
+.gitignore
+.git
